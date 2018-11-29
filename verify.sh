@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./gradlew clean verify
+./gradlew clean verify --info

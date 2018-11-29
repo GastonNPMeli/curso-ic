@@ -25,7 +25,7 @@ $ docker exec -it sql-server /opt/mssql-tools/bin/sqlcmd \
 Levantar redis
 
 ```sh
-$ docker run --name some-redis -p 6379:6379 -d redis
+$ docker run --name redis -p 6379:6379 -d redis
 ```
 
 Editar application-ic.properties, poner la ip de la máquina de cada uno (Esto es un workaround si no se posee un servidor de base de datos)
@@ -45,7 +45,7 @@ $ ./gradlew flywayMigrate
 Para levantar la imagen con el perfil ic
 
 ```sh
-$ docker run --name curso -e JAVA_OPTS="-Dspring.profiles.active=ic" -p 8080:8080 -d curso-ic:0.0.1-SNAPSHOT
+$ docker run --link sql-server:sql-server --link redis:redis --name curso -e JAVA_OPTS="-Dspring.profiles.active=ic" -p 8080:8080 -d curso-ic:0.0.1-SNAPSHOT
 ```
 
 Para correr las pruebas de integración
