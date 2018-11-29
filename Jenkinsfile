@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
          steps {
-             sh "./gradlew build"
+             sh "build.sh"
          }
          post{
             always{
@@ -18,12 +18,12 @@ pipeline {
         }
         stage('Deploy') {
           steps {
-              sh "./gradlew deploy"
+              sh "deploy.sh"
           }
         }
         stage('Verify') {
            steps {
-               sh "./gradlew verify"
+               sh "verify.sh"
            }
            post{
                always{
