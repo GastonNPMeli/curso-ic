@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
          steps {
-             sh "build.sh"
+             sh "./build.sh"
          }
          post{
             always{
@@ -18,12 +18,12 @@ pipeline {
         }
         stage('Deploy') {
           steps {
-              sh "deploy.sh"
+              sh "./deploy.sh"
           }
         }
         stage('Verify') {
            steps {
-               sh "verify.sh"
+               sh "./verify.sh"
            }
            post{
                always{
